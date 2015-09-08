@@ -1,0 +1,10 @@
+# Ignored files for the git repository
+
+# Ignore the build folder
+build/
+
+# Ignore all the emacs backup files
+*~
+
+# Ignore scons dbase
+.sconsign.dblite

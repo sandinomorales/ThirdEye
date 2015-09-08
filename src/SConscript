@@ -1,0 +1,40 @@
+##################################################################
+# Import environments, variables, etc.
+##################################################################
+Import( 'env', 'TARGET', 'INSTALL_PATH' )
+# Import everything
+# Import( '*' )
+
+
+##################################################################
+# Set the input files						 #
+##################################################################
+SRC_FILES = Split( """main.cpp
+                      loader.cpp
+                      rawImageIO.cpp
+                      thirdeyeMask.cpp
+                      thirdeyeEval.cpp
+                      thirdeye.cpp
+                      thirdeyeStats.cpp""" )
+
+# Print intput files
+print "Source file(s): ", SRC_FILES	
+
+
+##################################################################
+# Compile and assamble						 #
+##################################################################
+OBJECTS = env.Object( source = SRC_FILES )   
+
+##################################################################
+# Compile, link and generate executable file                     #
+##################################################################
+EXEC_FILE = env.Program( target = TARGET, source = OBJECTS )
+
+
+##################################################################
+# Install the binaries in  INSTALL_PATH
+##################################################################
+env.Install( INSTALL_PATH, EXEC_FILE )
+env.Alias( 'install', INSTALL_PATH )
+
